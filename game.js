@@ -1,10 +1,11 @@
-
-
-let randomChosenColor=random();
-switchSound(randomChosenColor);
-let gamePattern = [];
-let userClickedPattern = [];
-let level = 0;
+$(document).keydown(function () {
+  
+  let randomChosenColor=random();
+  switchSound(randomChosenColor);
+  let gamePattern = [];
+  let userClickedPattern = [];
+  let level = 0;
+  $("#level-title").text(`Level ${level}`);
 gamePattern.push(randomChosenColor);
 console.log(gamePattern);
 
@@ -18,24 +19,34 @@ $(".btn").click(function (event) {
   console.log(userClickedPattern);
   
   switchSound(userChosenColor);
-  if (gamePattern.toString() === userChosenColor.toString()) {
+  if (gamePattern.toString() === userClickedPattern.toString()) {
     console.log("success");
+    level++;
+    $("#level-title").text(`Level ${level}`);
     
-  } else {
+    setTimeout(function () {
+      
+      randomChosenColor= random();
+      gamePattern.push(randomChosenColor);
+      console.log(gamePattern);
+       switchSound(randomChosenColor);
+    },500)
+      
+    
+    userClickedPattern = [];
+  } else if (gamePattern.length === userClickedPattern.length){
     console.log("fail");
+    audio = new Audio("./sounds/wrong.mp3");
+    audio.play();
+    $("#level-title").text("Game Over");
   }
-  setTimeout(function () {
-    
-    randomChosenColor= random();
-     gamePattern.push(randomChosenColor);
-     switchSound(randomChosenColor);
-  },500)
-    
-  
-  return userClickedPattern;
   
   
 });
+});
+
+
+
 
 
 
