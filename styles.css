@@ -51,3 +51,25 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+@media (max-width:1101px) {
+ 
+  .btn {
+    margin: 25px;
+    display: inline-block;
+    min-height: 50px;
+    min-width: 100px;
+    border: 10px solid black;
+    border-radius: 20%;
+  }
+  .container{
+    position: relative;
+  }
+  .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+}
