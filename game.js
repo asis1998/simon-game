@@ -1,49 +1,55 @@
-$(document).keydown(function () {
+
   
-  let randomChosenColor=random();
-  switchSound(randomChosenColor);
-  let gamePattern = [];
-  let userClickedPattern = [];
-  let level = 0;
-  $("#level-title").text(`Level ${level}`);
-gamePattern.push(randomChosenColor);
-console.log(gamePattern);
-
-
-
-
-random();
-$(".btn").click(function (event) {
-  let userChosenColor = event.target.id;
-  userClickedPattern.push(userChosenColor);
-  console.log(userClickedPattern);
-  
-  switchSound(userChosenColor);
-  if (gamePattern.toString() === userClickedPattern.toString()) {
-    console.log("success");
-    level++;
+  $(document).keydown(function () {
+    
+    let randomChosenColor=random();
+    switchSound(randomChosenColor);
+    let gamePattern = [];
+    let userClickedPattern = [];
+    let level = 0;
     $("#level-title").text(`Level ${level}`);
-    
-    setTimeout(function () {
-      
-      randomChosenColor= random();
-      gamePattern.push(randomChosenColor);
-      console.log(gamePattern);
-       switchSound(randomChosenColor);
-    },500)
-      
-    
-    userClickedPattern = [];
-  } else if (gamePattern.length === userClickedPattern.length){
-    console.log("fail");
-    audio = new Audio("./sounds/wrong.mp3");
-    audio.play();
-    $("#level-title").text("Game Over");
-  }
+  gamePattern.push(randomChosenColor);
+  console.log(gamePattern);
   
   
-});
-});
+  
+  
+  random();
+    // $(".btn").click(function (event) {
+      $(".btn").on('click touchstart', function (event) {
+    let userChosenColor = event.target.id;
+    userClickedPattern.push(userChosenColor);
+    console.log(userClickedPattern);
+    
+    switchSound(userChosenColor);
+    if (gamePattern.toString() === userClickedPattern.toString()) {
+      console.log("success");
+      level++;
+      $("#level-title").text(`Level ${level}`);
+      
+      setTimeout(function () {
+        
+        randomChosenColor= random();
+        gamePattern.push(randomChosenColor);
+        console.log(gamePattern);
+         switchSound(randomChosenColor);
+      },500)
+        
+      
+      userClickedPattern = [];
+    } else if (gamePattern.length === userClickedPattern.length){
+      console.log("fail");
+      audio = new Audio("./sounds/wrong.mp3");
+      audio.play();
+      $("#level-title").text("Game Over");
+    }
+    
+    
+  });
+  });
+  
+
+
 
 
 
