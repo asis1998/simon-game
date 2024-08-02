@@ -16,7 +16,7 @@
   
   random();
     // $(".btn").click(function (event) {
-      $(".btn").on('click touchstart', function (event) {
+      $(".btn").on('click', function (event) {
     let userChosenColor = event.target.id;
     userClickedPattern.push(userChosenColor);
     console.log(userClickedPattern);
