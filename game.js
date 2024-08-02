@@ -1,6 +1,6 @@
 
   
-  $(document).keydown(function () {
+  $(document).on("keydown touchstart",function () {
     
     let randomChosenColor=random();
     switchSound(randomChosenColor);
